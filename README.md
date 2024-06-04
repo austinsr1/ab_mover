@@ -5,8 +5,6 @@ THIS DOES NOT ACUTALLY MOVE OR COPY FILES ITSELF. It is up to the user to look o
 
 Requirements: Python 3.10, Audiobookshelf, with the "Store metadata with item" enabled in settings.
 
-Certainly! Here is the description in Markdown format:
-
 ---
 
 ## `ab_mover` Utility

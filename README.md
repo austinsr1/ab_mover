@@ -32,12 +32,6 @@ The `ab_mover` utility is a Python script designed to organize audiobook files i
 - `--debug`: Enable debug logging for detailed information about the script's operations.
 - `-t, --top-level-dir`: Specify a custom top-level directory for audiobooks. The default is `/Audiobooks`.
 
-### Example
-To move audiobook files from a source directory to a custom top-level directory while enabling debug logging:
-```sh
-./ab_mover /mnt/array/Audio_Books/Tao\ Wong/Adventures\ on\ Brad\ -\ Complete\ Series\ -\ Batch\ -\ Tao\ Wong/ -t /CustomAudiobooks --debug
-```
-
 ### How It Works
 1. **Walking Through Directories:** The script recursively walks through the specified base directory to locate `metadata.json` files.
 2. **Processing Metadata:** For each `metadata.json` file found, the script extracts the title, authors, series, and potentially the book number.

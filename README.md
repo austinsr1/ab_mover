@@ -35,6 +35,6 @@ The `ab_mover` utility is a Python script designed to organize audiobook files i
 ### How It Works
 1. **Walking Through Directories:** The script recursively walks through the specified base directory to locate `metadata.json` files.
 2. **Processing Metadata:** For each `metadata.json` file found, the script extracts the title, authors, series, and potentially the book number.
-3. **Directory Creation:** Based on the extracted metadata, the script constructs a target directory path in the form of `<top_level_directory>/<author>/<series>/Book <book_number>`. It ensures that necessary directories are created only once.
+3. **Directory Creation:** Based on the extracted metadata, the script constructs a target directory path in the form of `<top_level_directory>/<author>/<series>/Book <book_number>`.
 4. **File Movement/Copying:** The script generates and prints bash commands to move or copy the files from the source to the target directories, depending on the specified options.
 ---

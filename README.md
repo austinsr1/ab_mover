@@ -1,7 +1,7 @@
 # ab_mover
 Command line utility to read an Audiobookshelf metadata.json file and generate bash to create a directory structure based on it.
 
-THIS DOES NOT ACUTALLY MOVE OR COPY FILES ITSELF. It is up to the user to look over the generated statements to make sure they are sane and aren't going to destroy their audiobbook library. 
+THIS DOES NOT ACUTALLY MOVE OR COPY FILES ITSELF. This application generates mkdir and mv/cp commands that can be executed from a terminal or the output can be redirected into a shellscript. It is up to the user to look over the generated statements to make sure they are sane and aren't going to destroy their audiobbook library. 
 
 Requirements: Python 3.10, Audiobookshelf, with the "Store metadata with item" enabled in settings.
 

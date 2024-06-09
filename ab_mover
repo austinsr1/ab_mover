@@ -79,17 +79,19 @@ def generate_bash_commands(base_dir, audiobooks_dir):
                 title = book_info['title']
                 book_dir = f"{audiobooks_dir}/{author}/{title}"
             
-            if book_dir not in created_dirs:
-                commands.append(f"mkdir -p '{book_dir}'")
-                created_dirs.add(book_dir)
-            
-            if COPY_MODE:
-                commands.append(f"cp -r '{root}'/* '{book_dir}/'")
-                debug_log(f"Generated commands to copy '{root}' to '{book_dir}'")
-            else:
-                commands.append(f"mv '{root}'/* '{book_dir}/'")
-                debug_log(f"Generated commands to move '{root}' to '{book_dir}'")
-    
+            if root != book_dir:
+                if book_dir not in created_dirs:
+                    commands.append(f"mkdir -p '{book_dir}'")
+                    created_dirs.add(book_dir)
+
+            if root != book_dir:
+                if COPY_MODE:
+                    commands.append(f"cp -r '{root}'/* '{book_dir}/'")
+                    debug_log(f"Generated commands to copy '{root}' to '{book_dir}'")
+                else:
+                    commands.append(f"mv '{root}'/* '{book_dir}/'")
+                    debug_log(f"Generated commands to move '{root}' to '{book_dir}'")
+
     return commands
 
 def main(base_dir, audiobooks_dir):

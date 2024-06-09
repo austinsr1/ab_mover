@@ -16,17 +16,17 @@ def debug_log(message):
         print(f"[DEBUG] {message}")
 
 def extract_book_info_from_dirname(dirname):
-    match = re.search(r'(bk|book)[_\s]*(\d+)', dirname, re.IGNORECASE)
+    match = re.search(r'(bk|book)[_\s]*(\d+(\.\d+)?)', dirname, re.IGNORECASE)
     if match:
         debug_log(f"Found book number {match.group(2)} in directory name '{dirname}'")
-        return int(match.group(2))
+        return float(match.group(2))
     return None
 
 def extract_book_info_from_series(series):
-    match = re.search(r'(.+?)\s*#\s*(\d+)', series)
+    match = re.search(r'(.+?)\s*#\s*(\d+(\.\d+)?)', series)
     if match:
         cleaned_series = match.group(1).strip()
-        book_number = int(match.group(2))
+        book_number = float(match.group(2))
         debug_log(f"Extracted book number {book_number} from series '{series}', cleaned series name is '{cleaned_series}'")
         return book_number, cleaned_series
     return None, series

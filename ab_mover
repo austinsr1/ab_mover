@@ -74,7 +74,7 @@ def generate_bash_commands(base_dir, audiobooks_dir):
             if book_number is not None and series:
                 tmp = series.split("#", 1)
                 series = tmp[0].strip()
-                book_dir = f"{audiobooks_dir}/{author}/{series}/{series} {book_number}"
+                book_dir = f"{audiobooks_dir}/{author}/{series}/{series} - {book_number}"
             else:
                 title = book_info['title']
                 book_dir = f"{audiobooks_dir}/{author}/{title}"

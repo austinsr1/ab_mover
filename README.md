@@ -15,7 +15,7 @@ The `ab_mover` utility is a Python script designed to organize audiobook files i
 ### Features
 - **Metadata Processing:** Reads metadata from `metadata.json` files to extract information such as title, author, and series.
 - **Book Number Extraction:** Automatically extracts book numbers from directory names or series metadata.
-- **Directory Organization:** Moves or copies files into a structured directory format based on author, series, and book number.
+- **Directory Organization:** Moves or copies files into a structured directory format based on author, series, and series number.
 - **Command-Line Options:** Offers flexibility with options for copying files, enabling debug logs, and specifying a custom top-level directory.
 - **Debug Logging:** Provides detailed logging for debugging purposes when enabled.
 

@@ -10,7 +10,7 @@ Requirements: Python 3.10, Audiobookshelf, with the "Store metadata with item" e
 ## `ab_mover` Utility
 
 ### Overview
-The `ab_mover` utility is a Python script designed to organize audiobook files into a structured directory format. The script processes audiobook metadata and moves or copies the files into a user-defined directory structure. It supports features like extracting book numbers from titles or series names, creating necessary directories, and handling various command-line options for flexibility.
+The `ab_mover` utility is a Python application designed to organize audiobook files into a structured directory format. The script processes audiobook metadata and moves or copies the files into a user-defined directory structure. It supports features like extracting book numbers from titles or series names, creating necessary directories, and handling various command-line options for flexibility.
 
 ### Features
 - **Metadata Processing:** Reads metadata from `metadata.json` files to extract information such as title, author, and series.

@@ -55,6 +55,10 @@ def process_metadata(metadata_path):
         'book_number': book_number,
     }
 
+def escape_quotes(path):
+    """Escape single quotes in the path."""
+    return path.replace("'", "'\"'\"'")
+
 def generate_bash_commands(base_dir, audiobooks_dir):
     commands = []
     created_dirs = set()
@@ -88,18 +92,21 @@ def generate_bash_commands(base_dir, audiobooks_dir):
                 title = book_info['title']
                 book_dir = f"{audiobooks_dir}/{author}/{title}"
             
-            if root != book_dir:
-                if book_dir not in created_dirs:
-                    commands.append(f"mkdir -p '{book_dir}'")
-                    created_dirs.add(book_dir)
+            # Escape quotes in paths
+            root_escaped = escape_quotes(root)
+            book_dir_escaped = escape_quotes(book_dir)
+            
+            if root_escaped != book_dir_escaped:
+                if book_dir_escaped not in created_dirs:
+                    commands.append(f"mkdir -p '{book_dir_escaped}'")
+                    created_dirs.add(book_dir_escaped)
 
-            if root != book_dir:
                 if COPY_MODE:
-                    commands.append(f"cp -r '{root}'/* '{book_dir}/'")
-                    debug_log(f"Generated commands to copy '{root}' to '{book_dir}'")
+                    commands.append(f"cp -r '{root_escaped}'/* '{book_dir_escaped}/'")
+                    debug_log(f"Generated commands to copy '{root_escaped}' to '{book_dir_escaped}'")
                 else:
-                    commands.append(f"mv '{root}'/* '{book_dir}/'")
-                    debug_log(f"Generated commands to move '{root}' to '{book_dir}'")
+                    commands.append(f"mv '{root_escaped}'/* '{book_dir_escaped}/'")
+                    debug_log(f"Generated commands to move '{root_escaped}' to '{book_dir_escaped}'")
 
     return commands
 

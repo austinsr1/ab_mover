@@ -15,6 +15,14 @@ def debug_log(message):
     if DEBUG:
         print(f"[DEBUG] {message}")
 
+def format_book_number(book_number):
+    if book_number is None:
+        return ""
+    if book_number == int(book_number):
+        return str(int(book_number))
+    else:
+        return str(book_number)
+
 def extract_book_info_from_dirname(dirname):
     match = re.search(r'(bk|book)[_\s]*(\d+(\.\d+)?)', dirname, re.IGNORECASE)
     if match:
@@ -71,10 +79,11 @@ def generate_bash_commands(base_dir, audiobooks_dir):
             if book_number is None and series:
                 book_number, series = extract_book_info_from_series(series)
             
+            formatted_book_number = format_book_number(book_number)
             if book_number is not None and series:
                 tmp = series.split("#", 1)
                 series = tmp[0].strip()
-                book_dir = f"{audiobooks_dir}/{author}/{series}/{series} - {book_number}"
+                book_dir = f"{audiobooks_dir}/{author}/{series}/{series} - {formatted_book_number}"
             else:
                 title = book_info['title']
                 book_dir = f"{audiobooks_dir}/{author}/{title}"

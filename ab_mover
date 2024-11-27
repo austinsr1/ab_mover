@@ -65,6 +65,10 @@ def generate_bash_commands(base_dir, audiobooks_dir):
     
     debug_log(f"Walking through the directory '{base_dir}'")
     for root, dirs, files in os.walk(base_dir):
+        if any(ignore_folder in root for ignore_folder in args.ignore_folders):
+            debug_log(f"Skipping directory '{root}' as it matches an ignore pattern")
+            debug_log(f"Ignored patterns are: {args.ignore_folders}")
+            continue
         if 'metadata.json' in files:
             metadata_path = os.path.join(root, 'metadata.json')
             book_info = process_metadata(metadata_path)
@@ -121,6 +125,7 @@ if __name__ == "__main__":
     parser.add_argument('-c', '--copy', action='store_true', help='Copy files instead of moving them.')
     parser.add_argument('--debug', action='store_true', help='Enable debug logging.')
     parser.add_argument('-t', '--top-level-dir', default=DEFAULT_AUDIOBOOKS_DIR, help='Top level directory for audiobooks.')
+    parser.add_argument('-i', '--ignore-folders', action='append', default=[], help='List of folder names or paths to ignore.')
 
     args = parser.parse_args()
 
